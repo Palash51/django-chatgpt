@@ -4,6 +4,7 @@ from django.db import transaction
 
 from rest_framework import viewsets
 from rest_framework.exceptions import APIException
+from helpers.es_helpers import fetch_data
 
 from core.models import Assignment
 from core.serializers import AssignmentSerializer
@@ -27,6 +28,8 @@ class AssignmentViewSet(viewsets.ModelViewSet):
 
                 # submit task for background execution
                 transaction.on_commit(lambda: task_execute.delay(job_params))
+            
+            fetch_data()
 
         except Exception as e:
             raise APIException(str(e))
