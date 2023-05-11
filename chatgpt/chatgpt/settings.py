@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+APPEND_SLASH=True
+
 
 # Application definition
 
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_elasticsearch_dsl',
-    'core'
+    'core',
+    'todo',
 ]
 
 MIDDLEWARE = [
